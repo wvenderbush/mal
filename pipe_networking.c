@@ -25,7 +25,7 @@ int server_handshake(int *from_client){
 
 	char *confMessage = "mal";
 
-	printf("Sending confirmation message...");
+	printf("Sending confirmation message...\n");
 	write(to_client, confMessage, sizeof(confMessage));
 
 	return to_client;
