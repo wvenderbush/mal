@@ -25,8 +25,9 @@ int server_handshake(int *from_client){
 
 	char *confMessage = "mal";
 
-	printf("Sending confirmation message...\n");
+	printf("Confirmation sent...\nConnection verified!\n");
 	write(to_client, confMessage, sizeof(confMessage));
+	
 
 	return to_client;
 
@@ -53,7 +54,7 @@ int client_handshake(int *to_server){
 	char message[MESSAGE_BUFFER_SIZE];
 	read(from_server, message, MESSAGE_BUFFER_SIZE);
 
-	printf("Confirmation message received: %s\n", message);
+	printf("Confirmation message received: %s\n\n", message);
 
 	int err = remove(sid);
 

@@ -22,6 +22,7 @@ int main() {
 	  read( from_client, buffer, sizeof(buffer) );
 	  process( buffer );
 	  write( to_client, buffer, sizeof(buffer));
+    printf("Request processed...\n");
   }
   return 0;
 }

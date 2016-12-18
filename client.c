@@ -25,7 +25,7 @@ int main() {
   
 	  write( to_server, buffer, sizeof(buffer) );
 	  read( from_server, buffer, sizeof(buffer) );
-	  printf( "received: %s\n", buffer );
+	  printf( "Received: %s\n\n", buffer );
   }
   
   return 0;
