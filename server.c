@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include "pipe_networking.h"
 
 void process( char * s );
 
 int main() {
+  printf("Server initiated...\n");
 
   int to_client, from_client;
   char buffer[MESSAGE_BUFFER_SIZE];
@@ -20,11 +23,8 @@ int main() {
 	  process( buffer );
 	  write( to_client, buffer, sizeof(buffer));
   }
-  
   return 0;
 }
-
-
 
 
 void process( char * s ) {
