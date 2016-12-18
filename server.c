@@ -18,11 +18,11 @@ int main() {
   
   to_client = server_handshake( &from_client );
 
-  // while (1){
+  while (1){
 	  read( from_client, buffer, sizeof(buffer) );
 	  process( buffer );
 	  write( to_client, buffer, sizeof(buffer));
-  // }
+  }
   return 0;
 }
 
