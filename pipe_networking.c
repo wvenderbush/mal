@@ -29,7 +29,7 @@ int server_handshake(int *from_client){
 	write(to_client, confMessage, MESSAGE_BUFFER_SIZE);
 
 	printf("Waiting for final check message...\n");
-	
+
 	read(*from_client, message, MESSAGE_BUFFER_SIZE);
 	printf("Receiving final check message: %s\n", message);
 
@@ -66,7 +66,6 @@ int client_handshake(int *to_server){
 
 	int err = remove(sid);
 
-	//SHOULD SEND A MESSAGE BACK TO CONFIRM CONNECTION HAS BEEN MADE!!! (server must be looking for and reading that message)
 
 	return from_server;
 
