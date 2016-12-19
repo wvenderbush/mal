@@ -26,8 +26,12 @@ int server_handshake(int *from_client){
 	char *confMessage = "mal";
 
 	printf("Confirmation sent...\nConnection verified!\n");
-	write(to_client, confMessage, sizeof(confMessage));
+	write(to_client, confMessage, MESSAGE_BUFFER_SIZE);
+
+	printf("Waiting for final check message...\n");
 	
+	read(*from_client, message, MESSAGE_BUFFER_SIZE);
+	printf("Receiving final check message: %s\n", message);
 
 	return to_client;
 
@@ -54,9 +58,15 @@ int client_handshake(int *to_server){
 	char message[MESSAGE_BUFFER_SIZE];
 	read(from_server, message, MESSAGE_BUFFER_SIZE);
 
-	printf("Confirmation message received: %s\n\n", message);
+	printf("Confirmation message received: %s\n", message);
+
+	write(*to_server, "mal", MESSAGE_BUFFER_SIZE);
+
+	printf("Final check sent!\n\n");
 
 	int err = remove(sid);
+
+	//SHOULD SEND A MESSAGE BACK TO CONFIRM CONNECTION HAS BEEN MADE!!! (server must be looking for and reading that message)
 
 	return from_server;
 
